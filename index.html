@@ -1,54 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurante</title>
-    <link rel="stylesheet" href="css/restaurante.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
-                
-</head>
-<body class="centrar">
-    <h1>Restaurante JG</h1>
-    <div class="filtros centrar">
-        <input type="text" id="busqueda" placeholder="Busca tu plato">
-        <select name="orden" id="orden">
-            <option value="">Ordenar Precio</option>
-            <option value="ASC">Ascendente</option>
-            <option value="DESC">Descendente</option>
-        </select>
-    </div>
-    <div class="contenedor"></div>    
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Servland</title>
+
+    <link
+      href="https://fonts.cdnfonts.com/css/tw-cen-mt-std"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet" />
+    <link rel="stylesheet" href="css/redes.css" />
+    <link rel="stylesheet" href="css/css.css" />
+    <link rel="stylesheet" href="css/celular.css">
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <nav class="menu navbar">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="">Nosotros</a></li>
+          <li><a href="">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="logo">
+        <a href="#"><img src="images/logo_iniv2.png" alt="Logo Servland" /></a>
+      </div>
+
+      <p class="slogan">Un mundo de Soluciones</p>
+    </header>
+
+    <main>
+      <section class="cuerpo seccion">
+        <div class="texto-cuerpo">
+          <p class="color">
+            Brindamos servicio técnico especializado para computadores e
+            impresoras, asegurando su óptimo rendimiento. ¡Confía en nosotros
+            para mantener tu equipo en perfectas condiciones!
+          </p>
+        </div>
+        
+        <div class="img-cuerpo">
+          <img src="images/doctor.png" alt="Técnico reparando equipo" />
+        </div>
+      </section>
+      <p class="titulos slogan">Nuestros Servicios</p>
+      <section id="servicios" class="servicios seccion">
+        
+        <article class="item sombra">
+          <h4 class="titulo-producto ">PC de Escritorio</h4>
+          <img src="images/pc.png" alt="PC de escritorio" />
+          <p class="">Solución a problemas de encendido, rendimiento y errores.</p>
+          <a href="servicio.html" class="boton">Cotizar</a>
+        </article>
+
+        <article class="item sombra">
+          <h4 class="titulo-producto">Portátiles</h4>
+          <img src="images/portatil.png" alt="Portátil" />
+          <p class="color">¿Tu laptop está lenta o se calienta demasiado?</p>
+          <a href="servicio.html" class="boton">Cotizar</a>
+        </article>
+
+        <article class="item sombra">
+          <h4 class="titulo-producto">Impresoras</h4>
+          <img src="images/impresora.png" alt="Impresora" />
+          <p>Diagnóstico y reparación de impresoras con fallos.</p>
+          <a href="servicio.html" class="boton">Cotizar</a>
+        </article>
+      </section>
+      <a href="https://wa.me/573003979143" class="whatsapp-button"  target="_blank">
+        <!--<span class="whatsapp-text">¡Chatea conmigo!</span>-->
+      <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp"/>
+      </a>
+    </main>
+    <!-- Botón de WhatsApp -->
     
-    <script>
-        const contenedor = $('.contenedor');
-        const buscador = $('#busqueda');
-        const ordenar = $('#orden');
-        let timeout;
-        // buscador live
-        buscador.on("input", function(){
-            clearTimeout(timeout);
-            timeout= setTimeout(()=>{
-                $.post("php/busqueda.php",{busqueda: buscador.val()}, function(datos){
-                    contenedor.html(datos);
-                });
-            },300);
-            
-        });
-        // mostrar todos los datos
-        $.get('php/restaurante.php', function(datos){
-            contenedor.html(datos);
-        });
-        //traer datos ordenados
-        ordenar.on('change', function(){
-            const valor = ordenar.val();
-            if(valor !== ""){
-                $.post('php/ordenar.php', {orden:valor}, function(datos){
-                    contenedor.html(datos)
-                })
-            }
-        })
-    </script>
-</body>
+  </body>
 </html>

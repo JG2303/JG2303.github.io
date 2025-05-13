@@ -1,0 +1,65 @@
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .boton-servicio{
+      padding: 10px;
+    }
+    .seccion {
+      width: 95%;
+    }
+    .header .logo img {
+      width: 65vw;
+      height: auto;
+    }
+    .navbar ul li a{
+      font-size: 14px;
+    }
+    .cuerpo .texto-cuerpo p{
+      font-size: 15px;
+    }
+    .slogan {
+      font-size: 20px;
+      text-align: center;
+    }
+    .texto-cuerpo {
+      width: 100%;
+    }
+    .img-cuerpo {
+      display: none;
+    }
+    .servicios {
+      flex-direction: column;
+      text-align: center;
+    }
+    .cuerpo {
+      flex-direction: column;
+      text-align: center;
+    }
+    .img-cuerpo {
+      width: 100%;
+    }
+    .site-nav ul {
+      flex-direction: column;
+      margin: 3px;
+    }
+  
+    .site-nav ul li {
+      margin: 0;
+    }
+    .item {
+      width: 80%;
+    }
+    .boton-servicio a{
+      width: 100%;
+    }
+    .container-errores{
+        padding: 0 10px;
+    }
+    .container-errores .error{
+        width: 100%;
+        padding: 0;
+        
+    }
+    
+      
+  }
+  
