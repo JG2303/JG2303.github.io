@@ -1,1 +1,54 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante</title>
+    <link rel="stylesheet" href="css/restaurante.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+                
+</head>
+<body class="centrar">
+    <h1>Restaurante JG</h1>
+    <div class="filtros centrar">
+        <input type="text" id="busqueda" placeholder="Busca tu plato">
+        <select name="orden" id="orden">
+            <option value="">Ordenar Precio</option>
+            <option value="ASC">Ascendente</option>
+            <option value="DESC">Descendente</option>
+        </select>
+    </div>
+    <div class="contenedor"></div>    
+    
+    <script>
+        const contenedor = $('.contenedor');
+        const buscador = $('#busqueda');
+        const ordenar = $('#orden');
+        let timeout;
+        // buscador live
+        buscador.on("input", function(){
+            clearTimeout(timeout);
+            timeout= setTimeout(()=>{
+                $.post("php/busqueda.php",{busqueda: buscador.val()}, function(datos){
+                    contenedor.html(datos);
+                });
+            },300);
+            
+        });
+        // mostrar todos los datos
+        $.get('php/restaurante.php', function(datos){
+            contenedor.html(datos);
+        });
+        //traer datos ordenados
+        ordenar.on('change', function(){
+            const valor = ordenar.val();
+            if(valor !== ""){
+                $.post('php/ordenar.php', {orden:valor}, function(datos){
+                    contenedor.html(datos)
+                })
+            }
+        })
+    </script>
+</body>
+</html>
